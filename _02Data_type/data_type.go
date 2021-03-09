@@ -41,12 +41,12 @@ func main() {
 	/*字符串：在双引号中，多行字符串放在反引号中
 	  其它对字符串的常见操作包含在strings类库中`*/
 	fmt.Println("\nstr := \"usr\\local\\share\\bitcoin\"")
-	var s1 string = `这
+	var s1 = `这
 真是
 一首
 好诗`
 	fmt.Println(s1)
-	var s2 []string = strings.Split(s1, "\n")
+	var s2 = strings.Split(s1, "\n")
 	fmt.Println(s2)
 
 	/*字符：包括byte类型与rune类型
