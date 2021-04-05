@@ -4,10 +4,11 @@ import "fmt"
 
 func main() {
 	/*数组定义及初始化：
-	  var listname [elenum]eletype
-	  var listname = [elenum / ...]eletype{initial values}
-	  listname := [elenum / ...]eletype{initial values}
-	  vat listname = [elenum / ...]eletype{index: vaule, ...}
+	 var listname [elenum]eletype
+	 var listname = [elenum / ...]eletype{initial values}
+	 listname := [elenum / ...]eletype{initial values}
+	 vat listname = [elenum / ...]eletype{index: vaule, ...}
+	注意：数组一般在创建时通过字面量初始化，否则初始化的都是元素的默认值，没有意义
 	*/
 	//listdemo := [3]uint8{2, 4, 8}
 	//var listdemo = [...]uint8{2,4,8}
