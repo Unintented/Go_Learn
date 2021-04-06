@@ -11,6 +11,30 @@ func main() {
 
 	/*goto*/
 	gotoFunc()
+
+	/*switch*/
+	switchFunc()
+}
+
+func switchFunc() {
+	/*Go中的switch不需要break，默认执行完匹配的case后停止执行
+	  如果需要继续往下顺序执行，使用fallthrough*/
+	//定义新类型Gender
+	type Gender bool
+	const (
+		Male   Gender = true
+		Female Gender = false
+	)
+	Leesin := Male
+	switch Leesin {
+	case Female:
+		fmt.Println("Leesin is a girl.")
+	case Male:
+		fmt.Println("Leesin is a boy.")
+		fallthrough
+	default:
+		fmt.Println("Leesin is somebody.")
+	}
 }
 
 func gotoFunc() {
