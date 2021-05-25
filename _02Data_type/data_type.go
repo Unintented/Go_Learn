@@ -21,7 +21,9 @@ func main() {
 	/*无符号整型：uint8,uint16,uint32,uint64,uint
 	  有符号整型：int8,int16,int32,int64,int
 	  其中int与uint会根据机器的指令长度变化，在涉及跨平台编译时最好不用
-	  其它的符号根据变量的实际取值选择，节省空间
+	  其它的符号根据变量的实际取值选择，节省空间，整型数据默认类型为int
+	  int32与int64为不同的类型，不能相互赋值
+	  int8数据范围：-2^7~2^7-1   uint数据范围：0～2^8-1，其他类似
 	  uintptr为无符号整型，用于存放一个指针*/
 	var age uint8 = 18
 	fmt.Println(age)
