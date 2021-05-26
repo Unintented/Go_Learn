@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	/*数组定义及初始化：
+	/*数组长度固定且元素类型相同，其长度也属于数组类型的一部分，故长度不同的两数组也是不同类型
+	 数组定义及初始化：
 	 var listname [elenum]eletype
 	 var listname = [elenum / ...]eletype{initial values}
 	 listname := [elenum / ...]eletype{initial values}
@@ -34,4 +35,12 @@ func main() {
 		}
 		fmt.Println()
 	}
+	/*数组作为参数传递时以引用形式传递，可以提高执行效率
+	  而以值传递时，是值拷贝，浪费空间不说，还无法修改原始数组内容*/
+	arrDemo := &[...]uint8{1: 2}
+	changeArray(arrDemo)
+	println(arrDemo)
+}
+func changeArray(arr *[2]uint8) {
+	(*arr)[1] = 3
 }
