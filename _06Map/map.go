@@ -4,7 +4,11 @@ import . "fmt"
 
 func main() {
 	/*map定义：map[keyType]valueType，默认初始值为nil，需要
-	  使用make函数分配内存：make(map[keyType]valueType, capacity)*/
+	  使用make函数分配内存：make(map[keyType]valueType, capacity)
+	  初始化可以在后面用大括号，赋值键值对
+	  简短声明时可直接使用make： mapName := make(map[keyType]valueType)
+	  map是无序的，底层通过hash表实现
+	  map的值可以是结构体，map也可存进切片中*/
 	scoreMap := make(map[string]uint8, 10)
 	scoreMap["上官特朗普"] = 99
 	scoreMap["司徒拜登"] = 59
