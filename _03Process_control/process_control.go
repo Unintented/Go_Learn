@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	/*if-else*/
@@ -35,9 +38,19 @@ func switchFunc() {
 	default:
 		fmt.Println("Leesin is somebody.")
 	}
+
+	//	switch variableName := 100; {//可赋初值
+	//    	 case variableName > 90:
+	// 		 ...
+	//	}
+	//  switch {//switch后为空可模拟if else
+	//		case variableName > 90:
+	// }
+	//  此外，一个case中可以有多个条件，只要满足其中一个即可
 }
 
 func gotoFunc() {
+	//使用for range遍历数组时，value是对应索引的值拷贝，不会影响原数据；若想修改，可以设成指针类型
 	for i := 0; i < 10; i++ {
 		for j := 0; j < 10; j++ {
 			if j == 2 {
@@ -79,5 +92,14 @@ func ifElse() {
 		println("B")
 	} else {
 		println("C")
+	}
+
+	//	打开某一个文件不存在或者由于权限的问题无法操作，通过这种方式判断在go语言中普遍存在，推荐使用
+	if fileHandle, err := os.Open("hello.txt"); err != nil {
+		//null
+		fmt.Println(fileHandle)
+		fmt.Println(err.Error())
+	} else {
+		fmt.Println("获取文件成功")
 	}
 }
