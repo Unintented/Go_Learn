@@ -43,10 +43,10 @@ func main() {
 	  需要注意的是，Go语言中支持对结构体指针直接使用"."来访问结构体成员，因此不论是结构体变量，还是指向结构体的指针变量，访问结构体成员的方式是一样的*/
 	var p2 = new(person)
 	fmt.Printf("%+v\n", p2)
-	p2.name = "司马·拜登"
-	p2.work = "mess China up"
+	(*p2).name = "司马·拜登"
+	(*p2).work = "mess China up"
 	p2.age = 78
-	fmt.Printf("%+v\n", p2)
+	fmt.Printf("%+v\n", *p2)
 
 	var p3 = &person{}
 	fmt.Printf("%+v\n", p3)

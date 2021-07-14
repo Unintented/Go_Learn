@@ -39,7 +39,9 @@ func main() {
 	  而以值传递时，是值拷贝，浪费空间不说，还无法修改原始数组内容*/
 	arrDemo := &[...]uint8{1: 2}
 	changeArray(arrDemo)
-	println(arrDemo)
+	for i := 0; i < len(*arrDemo); i++ {
+		fmt.Println((*arrDemo)[i])
+	}
 }
 func changeArray(arr *[2]uint8) {
 	(*arr)[1] = 3
