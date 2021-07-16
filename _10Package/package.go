@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	bean "github.com/Unintented/Go_learn/_10.1Bean"
+)
 
 func main() {
 	/*包：包名与文件夹的名称可以不一致，但同一个文件夹下面的包名必须相同，不允许有不同包名，会报错，且同一个包下的文件不能放在不同的文件夹中*/
@@ -21,6 +24,10 @@ func main() {
 		init() //仅限包内访问的方法
 		Pay()  //可在包外访问的方法
 	}
+
+	//测试可见性
+	fmt.Printf("%f\n", bean.TestPackageVisit())
+
 }
 
 // 首字母大写，外部包可见，可在其他包中使用

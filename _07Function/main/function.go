@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/Unintented/Go_learn/_07Function/closure"
+)
 
 func main() {
 	/*函数定义：func funcName(paramName paraType, ...) ([returnName] returnType){}
@@ -24,7 +27,10 @@ func main() {
 
 	//函数可以作为参数，也可作为返回值
 
-	/*匿名函数：没有函数名 func(paramName paramType) (returnType){}*/
+	/*匿名函数：没有函数名 func(paramName paramType) (returnType){}， 一般只执行一次
+	 一般有两种使用方式：
+	一：不给函数赋值给某个变量，需要在后面直接提供参数
+	二：给参数赋值给某个变量，此时可以选择调用时再提供参数，也可以直接提供参数，调用时只需使用赋值给的名称即可*/
 	add := func(x, y int) {
 		fmt.Println(x + y)
 	}
@@ -60,6 +66,36 @@ func main() {
 	funcA()
 	funcB()
 	funcC()
+
+	//	递归函数
+	fmt.Printf("递归测试：%d\n", fibonaqi(3))
+
+	/* 闭包是一个函数，是函数与函数外部数据的引用
+	 */
+	closureIns := closure.TestClosure()
+	fmt.Println(closureIns(1))
+	fmt.Println(closureIns(2))
+	fmt.Println(closureIns(3))
+
+}
+
+//func testClosure() func(int) int {
+//	var step int = 0
+//	return func(_step int) int {
+//		step += _step
+//		return step
+//	}
+//}
+
+func fibonaqi(i int) int {
+	if i < 1 {
+		panic("i 小于 0！")
+	} else if i == 1 || i == 2 {
+		return 1
+	} else {
+		return fibonaqi(i-1) + fibonaqi(i-2)
+	}
+
 }
 
 func funcA() {
