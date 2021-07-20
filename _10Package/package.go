@@ -28,6 +28,12 @@ func main() {
 	//测试可见性
 	fmt.Printf("%f\n", bean.TestPackageVisit())
 
+	// 包的引用方式：绝对路径（必须在GOPATH/src或GOROOT/scr路径下）、相对路径（只能引用GOPATH/src下的包）
+
+	// 在同一个包中，go函数不支持重载
+
+	// 函数可以作为参数类型
+
 }
 
 // 首字母大写，外部包可见，可在其他包中使用

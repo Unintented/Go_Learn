@@ -8,6 +8,15 @@ import (
 /*结构体：Go通过结构体实现面向对象
   结构体也是一种类型，类似于其他语言中的class，需要实例化才会分配内存并使用，可以用var来声明
   ！要注意结构体声明的位置，要保证接收者等能够访问到*/
+
+/*
+自定义类型
+结构体是值类型，直接使用等号赋值后是两个不同的变量，地址不相同，一般放在main函数外或其他包中
+两大种使用方法（指针、非指针），四小种使用方法
+两种结构体在字段完全相同的情况下可以进行强制类型转换
+结构体可以作为结构体字段的类型
+内存分布：结构体中内存地址是连续的
+*/
 type person struct {
 	name, work string
 	age        int8
@@ -21,7 +30,7 @@ type Person_2 struct {
 
 func main() {
 	/*自定义类型与类型别名*/
-	//自定义类型，是一种新的类型，具有int特性
+	//自定义类型，是一种新的类型，具有int特性，二者之间不能直接赋值，可以通过强制类型转换
 	type NewInt int
 	//类型别名与原类型是一种
 	type MyInt = int
@@ -30,7 +39,7 @@ func main() {
 	var b MyInt
 	fmt.Printf("type of a: %T\n", a)
 	fmt.Printf("type of b: %T\n", b)
-
+	//var p1 = person{...} 直接赋值
 	var p1 person
 	fmt.Printf("%+v\n", p1)
 	p1.name = "上官·特朗普"
@@ -41,6 +50,7 @@ func main() {
 	/*指针类型结构体：可以使用new进行初始化得到的就是指向该结构体类型的指针；同样的，直接使用&来对结构体进行初始化得到的也是指针
 	  默认初始化得到的都是对应类型的零值
 	  需要注意的是，Go语言中支持对结构体指针直接使用"."来访问结构体成员，因此不论是结构体变量，还是指向结构体的指针变量，访问结构体成员的方式是一样的*/
+	// var p2 *person，可以先声明类型，再分配内存；也可直接分配内存，让编译器自动识别类型
 	var p2 = new(person)
 	fmt.Printf("%+v\n", p2)
 	(*p2).name = "司马·拜登"
@@ -48,6 +58,7 @@ func main() {
 	p2.age = 78
 	fmt.Printf("%+v\n", *p2)
 
+	// var p3 *person = &person{}
 	var p3 = &person{}
 	fmt.Printf("%+v\n", p3)
 	p3.name = "诸葛·彭斯"
@@ -208,13 +219,16 @@ func main() {
 
 /*结构体类型中的方法与接收者
   个人理解就是结构体中的函数无需在结构体中进行定义，当然任何类型都可以使用接收者来添加方法
-  如果需要通过方法来修改结构体中的值，可以指针类型的接收者；此后，为了保证一致性，需要其他的方法也要使用指针类型接收者*/
+  如果需要通过方法来修改结构体中的值，可以设定指针类型的接收者；此后，为了保证一致性，需要其他的方法也要使用指针类型接收者*/
+
+//接受者可以是值类型，可以是指针类型；调用者可以是值类型，也可以是指针类型。
+//此外，接受者的名称一般设定为this或self
 func (p person) Dream() {
 	fmt.Printf("%s is daydreaming.\n", p.name)
 }
 
-func (p *person) SetAge(newAge int8) {
-	p.age = newAge
+func (this *person) SetAge(newAge int8) {
+	this.age = newAge
 }
 
 func (p *Person_2) SetDreams(dreams []string) {
